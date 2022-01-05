@@ -212,7 +212,7 @@ const Cart = () => {
         <Bottom>
           <Info>
             {cart.products?.map((product) => (
-              <Product key={product._id}>
+              <Product key={product._id + Math.random()}>
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
