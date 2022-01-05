@@ -1,9 +1,7 @@
-import express from "express";
-import { default as User } from "../models/User.js";
-import CryptoJS from "crypto-js";
-import dotenv from "dotenv";
-import Jwt from "jsonwebtoken";
-const router = express.Router();
+const router = require("express").Router();
+const User = require("../models/User");
+const CryptoJS = require("crypto-js");
+const Jwt = require("jsonwebtoken");
 
 router.post("/register", async (req, res) => {
   const newUser = new User({
@@ -59,4 +57,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -1,12 +1,11 @@
-import express from "express";
-import { default as Cart } from "../models/Cart.js";
-import {
+const Cart = require("../models/Cart");
+const {
   verifyToken,
-  verifyTokenAndAdmin,
   verifyTokenAndAuthorize,
-} from "./verifyToken.js";
+  verifyTokenAndAdmin,
+} = require("./verifyToken");
 
-const router = express.Router();
+const router = require("express").Router();
 
 //Create
 router.post("/", verifyToken, async (req, res) => {
@@ -66,4 +65,4 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -1,23 +1,25 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import { default as userRoute } from "./routes/user.js";
-import { default as authRoute } from "./routes/auth.js";
-import { default as productRoute } from "./routes/product.js";
-import { default as categoryRoute } from "./routes/category.js";
-import { default as cartRoute } from "./routes/cart.js";
-import { default as orderRoute } from "./routes/order.js";
-import { default as stripeRoute } from "./routes/stripe.js";
+const express = require("express");
+
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const userRoute = require("./routes/user");
+const authRoute = require("./routes/auth");
+const productRoute = require("./routes/product");
+const cartRoute = require("./routes/cart");
+const orderRoute = require("./routes/order");
+const stripeRoute = require("./routes/stripe");
+const categoryRoute = require("./routes/category");
 dotenv.config();
+
 const app = express();
 //check
-try {
-  const connection = await mongoose.connect(process.env.MONGO_URL);
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => console.log("DB great success"))
+  .catch((err) => {
+    console.log(err);
+  });
 
-  console.log(" great success");
-} catch (error) {
-  console.log(error);
-}
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
