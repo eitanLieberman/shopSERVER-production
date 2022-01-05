@@ -1,9 +1,8 @@
-import express from "express";
-import Stripe from "stripe";
-import dotenv from "dotenv";
+const router = require("express").Router();
+const dotenv = require("dotenv");
 dotenv.config();
-const router = express.Router();
-const stripe = Stripe(process.env.STRIPE_KEY);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+
 router.post("/payment", (req, res) => {
   stripe.charges.create(
     {
@@ -22,4 +21,4 @@ router.post("/payment", (req, res) => {
     }
   );
 });
-export default router;
+module.exports = router;

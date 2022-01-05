@@ -1,12 +1,11 @@
-import express from "express";
-import { default as User } from "../models/User.js";
-import {
+const User = require("../models/User");
+const {
   verifyToken,
-  verifyTokenAndAdmin,
   verifyTokenAndAuthorize,
-} from "./verifyToken.js";
+  verifyTokenAndAdmin,
+} = require("./verifyToken");
 
-const router = express.Router();
+const router = require("express").Router();
 //changing username
 router.put("/:id", verifyTokenAndAuthorize, async (req, res) => {
   if (req.body.password) {
@@ -90,4 +89,4 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
