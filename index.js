@@ -1,5 +1,5 @@
 const express = require("express");
-
+const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user");
@@ -34,6 +34,13 @@ app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
-app.listen(8080, () => {
+
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
+
+app.listen(process.env.PORT || 8080, () => {
   console.log("backend server running!");
 });

@@ -16,7 +16,9 @@ const Categories = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/categories");
+        const res = await axios.get(
+          "https://mern-shop-eitan.herokuapp.com/api/categories"
+        );
 
         setCategories(res.data);
       } catch (err) {}
