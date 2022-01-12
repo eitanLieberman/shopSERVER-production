@@ -136,15 +136,13 @@ const Navbar = () => {
             </MenuItem>
           )}
 
-          {user && (
-            <Link to="/cart">
-              <MenuItem>
-                <Badge badgeContent={quantity} color="primary">
-                  <ShoppingCartOutlined />
-                </Badge>
-              </MenuItem>
-            </Link>
-          )}
+          <Link to={user ? "/cart" : "/login"}>
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
