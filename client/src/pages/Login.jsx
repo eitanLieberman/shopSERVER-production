@@ -104,8 +104,8 @@ const Login = () => {
             LOGIN
           </Button>
           {error && <Error>Something went wrong</Error>}
-          <Link>FORGOT USERNAME?</Link>
-          <Link>NEW HERE? SING UP!</Link>
+          <Link to="login">FORGOT USERNAME?</Link>
+          <Link to="/register">NEW HERE? SING UP!</Link>
         </Form>
       </Wrapper>
     </Container>
