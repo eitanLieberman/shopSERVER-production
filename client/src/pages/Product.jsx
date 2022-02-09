@@ -152,8 +152,8 @@ const Product = () => {
     if (color === "") {
       return alert("choose a size and color please");
     }
-    const {...others,_id}=product
-    dispatch(addProduct({ ...others,_id:_id+Math.random(), quantity, color, size }));
+
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
   return (
